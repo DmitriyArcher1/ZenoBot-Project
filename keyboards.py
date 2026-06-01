@@ -58,3 +58,21 @@ def get_task_actions(task_id: int) -> InlineKeyboardMarkup:
     builder.adjust(2, 1)
     
     return builder.as_markup()
+
+def get_task_done(task_id: int) -> InlineKeyboardMarkup:
+    """Клавиатура для отображения статуса задачи после её выполнения. Содержит кнопку для возврата к списку задач.
+
+    Args:
+        task_id (int): ID задачи
+
+    Returns:
+        InlineKeyboardMarkup: Клавиатура с кнопкой для возврата к списку задач
+    """
+    builder = InlineKeyboardBuilder()
+    
+    builder.button(text = "Назад к списку задач", callback_data = "back_to_tasks")
+    builder.button(text = "Удалить задачу", callback_data = f"delete_{task_id}")
+    
+    builder.adjust(1, 2)
+    
+    return builder.as_markup()
