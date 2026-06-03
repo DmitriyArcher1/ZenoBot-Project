@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: zenobot_postgres
+    environment:
+      POSTGRES_DB: zenobot
+      POSTGRES_USER: zenobot_admin
+      POSTGRES_PASSWORD: Zeno2202200702052006
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  
+volumes:
+  postgres_data:
